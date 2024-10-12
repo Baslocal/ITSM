@@ -54,6 +54,32 @@ If you choose the default installation option, the following credentials will be
 
 Make sure to change these passwords in a real-world scenario.
 
+
+# Single command for os_ticketing.sh
+
+```
+# Check and install sudo if not present
+if ! command -v sudo &> /dev/null; then
+    apt-get update && apt-get install -y sudo
+fi
+
+# Check and install curl if not present
+if ! command -v curl &> /dev/null; then
+    sudo apt-get update && sudo apt-get install -y curl
+fi
+
+# Download the script
+sudo curl -s https://raw.githubusercontent.com/Baslocal/ITSM/main/os_ticketing.sh -o os_ticketing.sh
+
+# Make the script executable
+sudo chmod +x os_ticketing.sh
+
+# Run the script
+sudo ./os_ticketing.sh
+```
+
+
+
 ## Logging
 
 The script creates a log file `osticket_install.log` in the same directory, which can be useful for troubleshooting.
